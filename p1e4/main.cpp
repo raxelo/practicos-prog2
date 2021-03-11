@@ -78,19 +78,19 @@ void removerDetrasCola(Cola c, int x) {
 
     while (!esVacia(c)) {
         int num = frente(c);
-        encolar(num, aux);
+        aux = encolar(num, aux);
 
-        desencolar(c);
+        c = desencolar(c);
         if (num == x) break;
     }
 
     while (!esVacia(c)) {
-        desencolar(c);
+        c = desencolar(c);
     }
 
     while (!esVacia(aux)) {
-        encolar(frente(aux), c);
-        desencolar(aux);
+        c = encolar(frente(aux), c);
+        aux = desencolar(aux);
     }
 }
 
