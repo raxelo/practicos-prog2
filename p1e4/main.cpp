@@ -111,17 +111,17 @@ void removerDebajoPila(Pila p, int x) {
         int num = cima(p);
         insertarFinal(num, lista);
 
-        desapilar(p);
+        p = desapilar(p);
         if (num == x) break;
     }
 
     while (!esVacia(p)) {
-        desapilar(p);
+        p = desapilar(p);
     }
 
     for (int i = 0; i < largo(lista); i++) {
         int elem = obtener(i, lista);
-        apilar(elem, p);
+        p = apilar(elem, p);
     }
 }
 
