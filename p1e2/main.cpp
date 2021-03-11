@@ -73,8 +73,8 @@ Cola cambiar(unsigned int x, unsigned int y, Cola c) {
 
     while (!esVacia(copia)) {
         unsigned int frenteCola = frente(copia);
-        encolar(frenteCola == x ? y : frenteCola, resultado);
-        desencolar(copia);
+        resultado = encolar(frenteCola == x ? y : frenteCola, resultado);
+        copia = desencolar(copia);
     }
 
     return resultado;
