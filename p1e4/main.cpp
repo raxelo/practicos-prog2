@@ -27,18 +27,19 @@
  */
 Cola invertirCola(Cola c) {
     if (esVacia(c)) return crearCola();
+    Cola copia = c;
 
     Cola resultado = resultado;
     Pila pila = crearPila();
 
-    while (!esVacia(c)) {
-        apilar(frente(c), pila);
-        desencolar(c);
+    while (!esVacia(copia)) {
+        pila = apilar(frente(copia), pila);
+        copia = desencolar(copia);
     }
 
     while (!esVacia(pila)) {
-        encolar(cima(pila), resultado);
-        desapilar(pila);
+        resultado = encolar(cima(pila), resultado);
+        pila = desapilar(pila);
     }
 
     return resultado;
