@@ -104,15 +104,19 @@ Cola merge(Cola c1, Cola c2) {
             bool primeraMenor = frente(copia1) <= frente(copia2);
             menor = primeraMenor ? frente(copia1) : frente(copia2);
             unsigned int mayor = primeraMenor ? frente(copia2) : frente(copia1);
-            encolar(menor, resultado);
-            encolar(mayor, resultado);
+            resultado = encolar(menor, resultado);
+            resultado = encolar(mayor, resultado);
         } else {
             menor = !esVacia(copia1) ? frente(copia1) : frente(copia2);
-            encolar(menor, resultado);
+            resultado = encolar(menor, resultado);
         }
 
-        if (!esVacia(copia1)) desencolar(copia1);
-        if (!esVacia(copia2)) desencolar(copia2);
+        if (!esVacia(copia1)) {
+            copia1 = desencolar(copia1);
+        }
+        if (!esVacia(copia2))  {
+            copia2 = desencolar(copia2);
+        }
     }
 
     return resultado;
