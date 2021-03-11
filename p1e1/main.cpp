@@ -93,8 +93,8 @@ bool iguales(Pila p1, Pila p2) {
     bool iguales = true;
     while (!esVacia(copia1) && !esVacia(copia2) && iguales) {
         iguales = cima(copia1) == cima(copia2);
-        desapilar(copia1);
-        desapilar(copia2);
+        copia1 = desapilar(copia1);
+        copia2 = desapilar(copia2);
     }
 
     return iguales && esVacia(copia1) && esVacia(copia2);
