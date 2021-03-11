@@ -66,14 +66,14 @@ bool mismosElementos(Pila p, Cola c) {
 
     Pila invertida = crearPila();
     while (!esVacia(p)) {
-        apilar(cima(p), invertida);
-        desapilar(p);
+        invertida = apilar(cima(p), invertida);
+        p = desapilar(p);
     }
 
     bool iguales = true;
     while (!esVacia(c)) {
         int elementoEnCola = frente(c);
-        desencolar(c);
+        c = desencolar(c);
 
         if (!iguales) continue; // no hacemos break porque nos piden vaciar "c".
 
@@ -81,7 +81,7 @@ bool mismosElementos(Pila p, Cola c) {
 
         iguales = elementoEnPila == elementoEnCola;
 
-        desapilar(invertida);
+        invertida = desapilar(invertida);
         // check adicional por si "invertida" se vació antes que "c",
         // el código sería mucho más simple sin el requerimiento de vaciar "p" y "c".
         if (!esVacia(c) && esVacia(invertida)) {
