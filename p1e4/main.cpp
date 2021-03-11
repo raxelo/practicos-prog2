@@ -57,8 +57,8 @@ Pila invertirPila(Pila p) {
     Pila copia = p;
     Pila resultado = crearPila();
     while (!esVacia(copia)) {
-        apilar(cima(copia), resultado);
-        desapilar(copia);
+        resultado = apilar(cima(copia), resultado);
+        copia = desapilar(copia);
     }
 
     return resultado;
