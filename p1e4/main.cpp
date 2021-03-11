@@ -141,11 +141,11 @@ void ordenarListaAscendente(Lista l) {
             int valorJ = obtener(j, l);
             if (valorI < valorJ) continue;
 
-            eliminar(i, l);
-            insertar(i, valorJ, l);
+            l = eliminar(i, l);
+            l = insertar(i, valorJ, l);
 
-            eliminar(j, l);
-            insertar(j, valorI, l);
+            l = eliminar(j, l);
+            l = insertar(j, valorI, l);
         }
     }
 }
@@ -167,14 +167,14 @@ Pila ordenarPila(Pila p) {
     while (!esVacia(resultado)) {
         int valor = cima(resultado);
         insertarFinal(valor, lista);
-        desapilar(resultado);
+        resultado = desapilar(resultado);
     }
 
     ordenarListaAscendente(lista);
     resultado = crearPila();
     for (int i = 0; i < largo(lista); i++) {
         int valor = obtener(i, lista);
-        apilar(valor, resultado);
+        resultado = apilar(valor, resultado);
     }
 }
 
