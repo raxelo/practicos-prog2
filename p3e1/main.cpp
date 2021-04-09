@@ -83,19 +83,22 @@ void snoc(Lista &lista, int x) {
 void removeAll(Lista &lista, int x) {
     if (lista == nullptr) return;
 
-
-    if (lista->elem == x) {
-        lista = lista->sig;
-    }
-
-    Lista copy = lista;
-
-    while (copy->sig != nullptr) {
-        if (copy->sig->elem == x) {
-            copy->sig = copy->sig->sig;
+    Lista aux = lista;
+    Lista prev = nullptr;
+    while (aux != nullptr) {
+        Lista sig = aux->sig;
+        if (aux->elem == x) {
+            if (prev == nullptr) {
+                lista = lista->sig;
+                delete aux;
+            } else {
+                prev->sig = prev->sig->sig;
+                delete aux;
+            }
+        } else {
+            prev = aux;
         }
-
-        copy = copy->sig;
+        aux = sig;
     }
 }
 
